@@ -12,12 +12,12 @@ window.overrideredirect(True)
 
 homeFrame = Frame(window)
 timeFrame = Frame(window)
-calcFrame = Frame(window)
+
 canvasFrame = Frame(window)
 calculatortestFrame = Frame(window)
 bombFrame = Frame(window)
 pongFrame = Frame(window)
-mazeFrame = Frame(window)
+
 
 cell_size = 12 
 ms = 50 
@@ -39,8 +39,7 @@ NotColour = "red"
 lastx, lasty = 0,0
 
 
-equation = StringVar()
-input_field = Entry(calculatortestFrame, textvariable=equation)
+
 
 
 
@@ -150,22 +149,6 @@ def onclick(event):
                 Quit.place(height=70)
 
 
-def input_number(number, equation):
-   global expression
-   expression = expression + str(number)
-   equation.set(expression)
-def clear_input_field(equation):
-   global expression
-   expression = ""
-   equation.set("Enter the question?")
-def evaluate(equation):
-    global expression
-    try:
-        result = str(eval(expression))
-        equation.set(result)
-        expression = ""
-    except:
-        expression = ""
 
 def set_colour_red(event):
     global colour
@@ -202,46 +185,7 @@ def on_drag(event):
     on_click(event)
 
 
-def fncalculatortest():
-    homeFrame.pack_forget()
-    calculatortestFrame.pack(padx=5,pady=5)
-    input_field.place(height=100)
-    input_field.grid(columnspan=4, ipadx=70, ipady=5)
-    equation.set("Enter the expression")
-    btn1 = Button(calculatortestFrame, text='1', fg='white', bg='black', bd=0, command=lambda: input_number(1, equation), height=2, width=7)
-    btn1.grid(row=2, column=0)
-    btn2 = Button(calculatortestFrame, text='2', fg='white', bg='black', bd=0, command=lambda: input_number(2, equation), height=2, width=7)
-    btn2.grid(row=2, column=1)
-    btn3 = Button(calculatortestFrame, text='3', fg='white', bg='black', bd=0, command=lambda: input_number(3, equation), height=2, width=7)
-    btn3.grid(row=2, column=2)
-    btn4 = Button(calculatortestFrame, text='4', fg='white', bg='black', bd=0, command=lambda: input_number(4, equation), height=2, width=7)
-    btn4.grid(row=3, column=0)
-    btn5 = Button(calculatortestFrame, text='5', fg='white', bg='black', bd=0, command=lambda: input_number(5, equation), height=2, width=7)
-    btn5.grid(row=3, column=1)
-    btn6 = Button(calculatortestFrame, text='6', fg='white', bg='black', bd=0, command=lambda: input_number(6, equation), height=2, width=7)
-    btn6.grid(row=3, column=2)
-    btn7 = Button(calculatortestFrame, text='7', fg='white', bg='black', bd=0, command=lambda: input_number(7, equation), height=2, width=7)
-    btn7.grid(row=4, column=0)
-    btn8 = Button(calculatortestFrame, text='8', fg='white', bg='black', bd=0, command=lambda: input_number(8, equation), height=2, width=7)
-    btn8.grid(row=4, column=1)
-    btn9 = Button(calculatortestFrame, text='9', fg='white', bg='black', bd=0, command=lambda: input_number(9, equation), height=2, width=7)
-    btn9.grid(row=4, column=2)
-    btn0 = Button(calculatortestFrame, text='0', fg='white', bg='black', bd=0, command=lambda: input_number(0, equation), height=2, width=7)
-    btn0.grid(row=5, column=0)
-    btnplus = Button(calculatortestFrame, text='+', fg='white', bg='black', bd=0, command=lambda: input_number('+', equation), height=2, width=7)
-    btnplus.grid(row=2, column=3)
-    btnminus = Button(calculatortestFrame, text='-', fg='white', bg='black', bd=0, command=lambda: input_number('-', equation), height=2, width=7)
-    btnminus.grid(row=3, column=3)
-    btnmultiply = Button(calculatortestFrame, text='*', fg='white', bg='black', bd=0, command=lambda:  input_number('*', equation), height=2, width=7)
-    btnmultiply.grid(row=4, column=3)
-    btndivide = Button(calculatortestFrame, text='/', fg='white', bg='black', bd=0, command=lambda: input_number('/', equation), height=2, width=7)
-    btndivide.grid(row=5, column=3)
-    btnequal = Button(calculatortestFrame, text='=', fg='white', bg='black', bd=0, command=lambda: evaluate(equation), height=2, width=7)
-    btnequal.grid(row=5, column=2)
-    btnclear = Button(calculatortestFrame, text='Clear', fg='white', bg='black', bd=0, command=lambda: clear_input_field(equation), height=2, width=7)
-    btnclear.grid(row=5, column=1)
-    btnhome = Button(calculatortestFrame, text="home", command=fnlogin)
-    btnhome.grid(row=5, column=4)
+
 
 
 def password_valid(user,passw):
@@ -287,18 +231,18 @@ def fnlogin():
         lblWelcome = Label(homeFrame, text=res)
         lblWelcome.grid(column=0, row=0)
         btntime = Button(homeFrame, text="time", command=fntime)
-        btncalc = Button(homeFrame, text="calculator", command=fncalculatortest)
+        
         btnlotto = Button(homeFrame, text="drawing", command=fncanvas)
         btnhiguy = Button(homeFrame, text="bomb dodgers", command=fnplay_bombdoger)
         btnpong = Button(homeFrame, text="pong", command=fnpong)
-        btnmaze = Button(homeFrame, text="maze", command=fnmaze)
+        
         btnQUIT = Button(homeFrame, text="QUIT", command=fnQUIT)
         btntime.grid(column=1, row=1)
-        btncalc.grid(column=2, row=1)
+        
         btnlotto.grid(column=1, row=2)
         btnhiguy.grid(column=2, row=2)
         btnpong.grid(column=1, row=3)
-        btnmaze.grid(column=2, row=3)
+        
         btnQUIT.grid(column=1, row=4)
     else:
         incorrectlbl = Label(loginFrame, bg="red", foreground="white", text="incorrect password or username")
@@ -506,9 +450,7 @@ def fntime():
     btnhome.grid(column=0, row=0)
 
 
-def fncalculator():
-    if __name__ == '__main__':
-      main()
+
 
 
 def fncanvas():
